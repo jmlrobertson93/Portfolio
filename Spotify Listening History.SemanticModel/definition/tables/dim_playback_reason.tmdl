@@ -1,0 +1,36 @@
+table dim_playback_reason
+	lineageTag: aa000001-0001-0001-0001-000000000001
+
+	column reason_key
+		dataType: int64
+		formatString: 0
+		displayFolder: Keys
+		lineageTag: aa000001-0001-0001-0001-000000000002
+		summarizeBy: none
+		sourceColumn: reason_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reason Name'
+		dataType: string
+		lineageTag: aa000001-0001-0001-0001-000000000003
+		summarizeBy: none
+		sourceColumn: Reason Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_playback_reason = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\jackr\Downloads\my_spotify_data\star_schema\dim_playback_reason.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"reason_key", Int64.Type}, {"reason_name", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"reason_name", "Reason Name"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

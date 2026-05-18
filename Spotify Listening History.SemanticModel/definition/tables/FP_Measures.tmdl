@@ -1,0 +1,40 @@
+table FP_Measures
+	lineageTag: 08c8ae14-7bda-4c03-87c2-bf0c2a867cbd
+
+	column Measure
+		lineageTag: e8325693-b6cb-404e-ae32-68c483583171
+		sourceColumn: [Value1]
+
+	column 'Measure Field'
+		lineageTag: eb33197f-d406-4963-ae2e-759d7a115e4f
+		sourceColumn: [Value2]
+
+	column 'Measure Ordinal'
+		lineageTag: 2316ba28-a731-472b-b388-84361f146a41
+		sourceColumn: [Value3]
+
+	column 'Measure Name Txt'
+		lineageTag: 25063202-c31f-4c60-a5ef-d68f3aa8c5d8
+		sourceColumn: [Value4]
+
+	partition FP_Measures = calculated
+		mode: import
+		source =
+				{
+					("Total Listening Time (hrs)", NAMEOF('_Measures'[Total Listening Time (hrs)]), 0, "Total Listening Time (hrs)"),
+					("Total Listening Time (min)", NAMEOF('_Measures'[Total Listening Time (min)]), 1, "Total Listening Time (min)"),
+					("Count of Streams", NAMEOF('_Measures'[Count of Streams]), 2, "Count of Streams"),
+					("Unique Tracks", NAMEOF('_Measures'[Unique Tracks]), 3, "Unique Tracks"),
+					("Unique Artists", NAMEOF('_Measures'[Unique Artists]), 4, "Unique Artists"),
+					("Unique Albums", NAMEOF('_Measures'[Unique Albums]), 5, "Unique Albums"),
+					("Skip Rate %", NAMEOF('_Measures'[Skip Rate %]), 6, "Skip Rate %"),
+					("Shuffle Rate %", NAMEOF('_Measures'[Shuffle Rate %]), 7, "Shuffle Rate %"),
+					("Avg. Stream Duration (min)", NAMEOF('_Measures'[Avg. Stream Duration (min)]), 8, "Avg. Stream Duration (min)"),
+					("Offline Plays", NAMEOF('_Measures'[Offline Plays]), 9, "Offline Plays"),
+					("Unique Shows", NAMEOF('_Measures'[Unique Shows]), 10, "Unique Shows")
+				}
+
+	annotation PBI_Id = 766ae9d4-2dea-4193-a111-d786ec485a88
+
+	annotation PBI_ParameterFields = "[\"FP_Measures\"]"
+

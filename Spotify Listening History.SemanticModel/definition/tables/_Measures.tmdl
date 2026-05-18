@@ -1,0 +1,99 @@
+table _Measures
+	lineageTag: b21c4170-3b91-416a-81c2-116fa8348dd5
+
+	measure 'Selected Measure' =
+			SWITCH(
+			    SELECTEDVALUE(FP_Measures[Measure]),
+			    "Total Listening Time (hrs)", [Total Listening Time (hrs)],
+			    "Total Listening Time (min)", [Total Listening Time (min)],
+			    "Count of Streams", [Count of Streams],
+			    "Unique Tracks", [Unique Tracks],
+			    "Unique Artists", [Unique Artists],
+			    "Unique Albums", [Unique Albums],
+			    "Skip Rate %", [Skip Rate %],
+			    "Shuffle Rate %", [Shuffle Rate %],
+			    "Avg. Stream Duration (min)", [Avg. Stream Duration (min)],
+			    "Offline Plays", [Offline Plays],
+			    "Unique Shows", [Unique Shows]
+			)
+		formatString: #,0
+		lineageTag: b21c4170-0001-0001-0001-000000000012
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Selected Measure Name' = SELECTEDVALUE(FP_Measures[Measure])
+		lineageTag: b21c4170-0001-0001-0001-000000000013
+
+	measure 'Selected Dimension Name' = SELECTEDVALUE(FP_Dimensions[Dimension Name])
+		lineageTag: b21c4170-0001-0001-0001-000000000014
+
+	measure 'Dynamic Visual Title' = [Selected Measure Name] & " by " & [Selected Dimension Name]
+		lineageTag: b21c4170-0001-0001-0001-000000000015
+
+	measure 'Total Listening Time (hrs)' = DIVIDE(SUM(fact_stream[ms_played]), 3600000)
+		formatString: #,##0.0
+		lineageTag: b21c4170-0001-0001-0001-000000000001
+
+	measure 'Total Listening Time (min)' = DIVIDE(SUM(fact_stream[ms_played]), 60000)
+		formatString: #,##0.0
+		lineageTag: b21c4170-0001-0001-0001-000000000002
+
+	measure 'Count of Streams' = COUNTROWS(fact_stream)
+		formatString: #,0
+		lineageTag: b21c4170-0001-0001-0001-000000000003
+
+	measure 'Unique Tracks' = DISTINCTCOUNT(fact_stream[track_key])
+		formatString: #,0
+		lineageTag: b21c4170-0001-0001-0001-000000000004
+
+	measure 'Unique Artists' = DISTINCTCOUNT(fact_stream[artist_key])
+		formatString: #,0
+		lineageTag: b21c4170-0001-0001-0001-000000000005
+
+	measure 'Unique Albums' = DISTINCTCOUNT(fact_stream[album_key])
+		formatString: #,0
+		lineageTag: b21c4170-0001-0001-0001-000000000006
+
+	measure 'Skip Rate %' = DIVIDE(CALCULATE(COUNTROWS(fact_stream), fact_stream[skipped] = TRUE()), COUNTROWS(fact_stream))
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b21c4170-0001-0001-0001-000000000007
+
+	measure 'Shuffle Rate %' = DIVIDE(CALCULATE(COUNTROWS(fact_stream), fact_stream[shuffle] = TRUE()), COUNTROWS(fact_stream))
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b21c4170-0001-0001-0001-000000000008
+
+	measure 'Avg. Stream Duration (min)' = DIVIDE(AVERAGE(fact_stream[ms_played]), 60000)
+		formatString: #,##0.00
+		lineageTag: b21c4170-0001-0001-0001-000000000009
+
+	measure 'Offline Plays' = CALCULATE(COUNTROWS(fact_stream), fact_stream[offline] = TRUE())
+		formatString: #,0
+		lineageTag: b21c4170-0001-0001-0001-000000000010
+
+	measure 'Unique Shows' = DISTINCTCOUNT(fact_stream[show_key])
+		formatString: #,0
+		lineageTag: b21c4170-0001-0001-0001-000000000011
+
+	measure 'Timseries Title' = [Selected Measure Name]&" by Date of Stream"
+		lineageTag: 56a00569-624e-41dd-a5f7-900e924c9500
+
+	measure 'Platform Title' = [Selected Measure Name]&" by Platform Category"
+		lineageTag: 2842b614-1e7c-45e7-9593-e0f68301c19d
+
+	measure 'Artist Title' = [Selected Measure Name]&" by Top 10 Artists"
+		lineageTag: 75980caa-a8c9-4243-9ace-a3c7802ecdd8
+
+	column Value
+		isHidden
+		lineageTag: 75ac080c-7e2b-4ba7-aad0-adc98d1eb095
+		isNameInferred
+		sourceColumn: [Value]
+
+	partition _Measures = calculated
+		mode: import
+		source = {("")}
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
