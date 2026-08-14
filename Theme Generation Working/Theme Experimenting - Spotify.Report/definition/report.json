@@ -11,7 +11,7 @@
       "type": "SharedResources"
     },
     "customTheme": {
-      "name": "Spotify_Personal_Theme02112606700701003.json",
+      "name": "Spotify_Personal_Theme5892192561010573.json",
       "reportVersionAtImport": {
         "visual": "2.8.0",
         "report": "3.2.0",
@@ -283,6 +283,11 @@
           "name": "Fluent2-CY26SU04",
           "path": "BaseThemes/Fluent2-CY26SU04.json",
           "type": "BaseTheme"
+        },
+        {
+          "name": "usa.states.topo",
+          "path": "Shapemaps/usa.states.topo.json",
+          "type": "ShapeMap"
         }
       ]
     },
@@ -291,8 +296,8 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "Spotify_Personal_Theme02112606700701003.json",
-          "path": "Spotify_Personal_Theme02112606700701003.json",
+          "name": "Spotify_Personal_Theme5892192561010573.json",
+          "path": "Spotify_Personal_Theme5892192561010573.json",
           "type": "CustomTheme"
         }
       ]

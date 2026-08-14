@@ -23,11 +23,12 @@
                       "Entity": "dim_calendar"
                     }
                   },
-                  "Property": "Year"
+                  "Property": "Week Day"
                 }
               },
-              "queryRef": "dim_calendar.Year",
-              "nativeQueryRef": "Year"
+              "queryRef": "dim_calendar.Week Day",
+              "nativeQueryRef": "Week Day",
+              "active": true
             }
           ]
         },
@@ -67,7 +68,60 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Count of Streams"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "enableValueDataLabel": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "zoom": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }

@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
-  "name": "ed39a2a3f96e09f3bdc4",
+  "name": "e4852430538092b37387",
   "position": {
-    "x": 320,
-    "y": 640,
-    "z": 6000,
-    "height": 416,
+    "x": 1120,
+    "y": 223.99999999999997,
+    "z": 22000,
+    "height": 400,
     "width": 784,
-    "tabOrder": 6000
+    "tabOrder": 22000
   },
   "visual": {
-    "visualType": "stackedColumnChart",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "dim_calendar.Year",
-              "nativeQueryRef": "Year"
+              "nativeQueryRef": "Year",
+              "active": true
             }
           ]
         },

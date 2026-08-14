@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "dim_calendar.Year",
-              "nativeQueryRef": "Year"
+              "nativeQueryRef": "Year",
+              "active": true
             }
           ]
         },

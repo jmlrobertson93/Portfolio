@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "dim_country.Country Code",
-              "nativeQueryRef": "Country Code"
+              "nativeQueryRef": "Country Code",
+              "active": true
             }
           ]
         },

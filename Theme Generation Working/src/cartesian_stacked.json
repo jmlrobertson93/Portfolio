@@ -1,10 +1,5 @@
 {
-  "_appliesTo": [
-    "stackedBarChart",
-    "stackedColumnChart",
-    "hundredPercentStackedBarChart",
-    "hundredPercentStackedColumnChart"
-  ],
+  "_appliesTo": ["stackedBarChart", "stackedColumnChart"],
   "styles": {
     "*": {
       "categoryAxis": [

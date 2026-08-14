@@ -27,43 +27,8 @@
                 }
               },
               "queryRef": "dim_artist.Artist Name",
-              "nativeQueryRef": "Artist Name"
-            }
-          ]
-        },
-        "X": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Avg. Stream Duration (min)"
-                }
-              },
-              "queryRef": "_Measures.Avg. Stream Duration (min)",
-              "nativeQueryRef": "Avg. Stream Duration (min)"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Count of Streams"
-                }
-              },
-              "queryRef": "_Measures.Count of Streams",
-              "nativeQueryRef": "Count of Streams"
+              "nativeQueryRef": "Artist Name",
+              "active": true
             }
           ]
         },
@@ -82,6 +47,43 @@
               },
               "queryRef": "_Measures.Unique Tracks",
               "nativeQueryRef": "Unique Tracks"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Avg. Stream Duration (min)"
+                }
+              },
+              "queryRef": "_Measures.Avg. Stream Duration (min)",
+              "nativeQueryRef": "Avg. Stream Duration (min)",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Count of Streams"
+                }
+              },
+              "queryRef": "_Measures.Count of Streams",
+              "nativeQueryRef": "Count of Streams"
             }
           ]
         }

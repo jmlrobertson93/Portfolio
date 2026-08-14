@@ -12,6 +12,7 @@
   ],
   "foreground": "#4E4C4C",
   "background": "#FFFFFF",
+  "backgroundNeutral": "#CCCCCC",
   "good": "#1AAB40",
   "neutral": "#FCBB00",
   "bad": "#E33A02",

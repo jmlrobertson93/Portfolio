@@ -23,11 +23,12 @@
                       "Entity": "dim_calendar"
                     }
                   },
-                  "Property": "Calendar Date"
+                  "Property": "Start Of Year"
                 }
               },
-              "queryRef": "dim_calendar.Calendar Date",
-              "nativeQueryRef": "Calendar Date"
+              "queryRef": "dim_calendar.Start Of Year",
+              "nativeQueryRef": "Start Of Year",
+              "active": true
             }
           ]
         },
@@ -67,6 +68,24 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_calendar"
+                  }
+                },
+                "Property": "Start Of Year"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "drillFilterOtherVisuals": true

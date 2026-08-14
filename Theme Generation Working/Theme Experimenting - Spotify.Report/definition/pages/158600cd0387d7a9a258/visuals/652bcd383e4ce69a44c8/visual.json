@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "dim_artist.Artist Name",
-              "nativeQueryRef": "Artist Name"
+              "nativeQueryRef": "Artist Name",
+              "active": true
             }
           ]
         },
@@ -50,6 +51,34 @@
           ]
         }
       }
+    },
+    "visualContainerObjects": {
+      "spacing": [
+        {
+          "properties": {
+            "spaceBelowTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "divider": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }

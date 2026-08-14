@@ -1,0 +1,29 @@
+{
+  "visualStyles": {
+    "waterfallChart": {
+      "*": {
+        "categoryAxis": [
+          { "fontFamily": "Arial", "fontSize": 12 }
+        ],
+        "valueAxis": [
+          { "show": false, "gridlineShow": false }
+        ],
+        "legend": [
+          { "position": "TopRight", "fontSize": 14, "fontFamily": "Arial" }
+        ],
+        "labels": [
+          {
+            "show": true,
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "color": {
+              "solid": {
+                "color": { "expr": { "ThemeDataColor": { "ColorId": 9, "Percent": 0 } } }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

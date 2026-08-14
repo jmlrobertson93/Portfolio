@@ -1,5 +1,5 @@
 {
-  "_appliesTo": ["barChart", "columnChart", "clusteredColumnChart"],
+  "_appliesTo": ["clusteredColumnChart"],
   "styles": {
     "*": {
       "categoryAxis": [

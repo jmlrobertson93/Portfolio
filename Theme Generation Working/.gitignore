@@ -1,7 +1,7 @@
 # Power BI Desktop local/machine-specific files (not report source)
-.pbi/cache.abf
-.pbi/localSettings.json
-.pbi/editorSettings.json
+**/.pbi/cache.abf
+**/.pbi/localSettings.json
+**/.pbi/editorSettings.json
 
 # Power BI packaged files (source is the .pbip project, not these)
 *.pbix

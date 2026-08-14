@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "b8d96f2eb9df507ef134",
   "position": {
-    "x": 1120,
+    "x": 320,
     "y": 640,
-    "z": 19000,
+    "z": 18000,
     "height": 416,
-    "width": 784,
-    "tabOrder": 19000
+    "width": 1583.9999999999998,
+    "tabOrder": 18000
   },
   "visual": {
     "visualType": "waterfallChart",
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "dim_calendar.Year",
-              "nativeQueryRef": "Year"
+              "nativeQueryRef": "Year",
+              "active": true
             }
           ]
         },
@@ -50,6 +51,34 @@
           ]
         }
       }
+    },
+    "objects": {
+      "valueAxis": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }

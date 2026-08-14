@@ -1,0 +1,17 @@
+{
+  "visualStyles": {
+    "ribbonChart": {
+      "*": {
+        "categoryAxis": [
+          { "fontFamily": "Arial", "fontSize": 12 }
+        ],
+        "valueAxis": [
+          { "gridlineShow": false }
+        ],
+        "legend": [
+          { "position": "TopRight", "fontSize": 14, "fontFamily": "Arial" }
+        ]
+      }
+    }
+  }
+}

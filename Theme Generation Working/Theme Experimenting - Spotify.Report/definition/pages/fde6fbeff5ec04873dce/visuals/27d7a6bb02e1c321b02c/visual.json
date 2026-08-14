@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "dim_playback_reason.Reason Name",
-              "nativeQueryRef": "Reason Name"
+              "nativeQueryRef": "Reason Name",
+              "active": true
             }
           ]
         },
@@ -50,6 +51,28 @@
           ]
         }
       }
+    },
+    "visualContainerObjects": {
+      "divider": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }

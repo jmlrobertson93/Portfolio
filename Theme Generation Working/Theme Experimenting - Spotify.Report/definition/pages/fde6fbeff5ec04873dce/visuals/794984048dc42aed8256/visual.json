@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "dim_platform.Platform Category",
-              "nativeQueryRef": "Platform Category"
+              "nativeQueryRef": "Platform Category",
+              "active": true
             }
           ]
         },
