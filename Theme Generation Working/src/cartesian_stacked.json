@@ -1,0 +1,44 @@
+{
+  "_appliesTo": [
+    "stackedBarChart",
+    "stackedColumnChart",
+    "hundredPercentStackedBarChart",
+    "hundredPercentStackedColumnChart"
+  ],
+  "styles": {
+    "*": {
+      "categoryAxis": [
+        { "fontFamily": "Arial", "fontSize": 12, "innerPadding": 25 }
+      ],
+      "valueAxis": [
+        { "show": false, "gridlineShow": false }
+      ],
+      "legend": [
+        { "position": "TopRight", "fontSize": 14, "fontFamily": "Arial" }
+      ],
+      "labels": [
+        {
+          "show": true,
+          "fontSize": 14,
+          "fontFamily": "Arial",
+          "color": {
+            "solid": {
+              "color": { "expr": { "ThemeDataColor": { "ColorId": 9, "Percent": 0 } } }
+            }
+          },
+          "labelPosition": "InsideEnd",
+          "labelDensity": 0,
+          "labelDisplayUnits": 1,
+          "labelPrecision": 0,
+          "enableBackground": false,
+          "backgroundTransparency": 0,
+          "backgroundColor": {
+            "solid": {
+              "color": { "expr": { "ThemeDataColor": { "ColorId": 2, "Percent": 0.6 } } }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

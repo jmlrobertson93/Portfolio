@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "b8896741b00730ab0c75",
+  "position": {
+    "x": 320,
+    "y": 640,
+    "z": 6000,
+    "height": 416,
+    "width": 784,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_platform"
+                    }
+                  },
+                  "Property": "Platform Category"
+                }
+              },
+              "queryRef": "dim_platform.Platform Category",
+              "nativeQueryRef": "Platform Category"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Count of Streams"
+                }
+              },
+              "queryRef": "_Measures.Count of Streams",
+              "nativeQueryRef": "Count of Streams"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Unique Tracks"
+                }
+              },
+              "queryRef": "_Measures.Unique Tracks",
+              "nativeQueryRef": "Unique Tracks"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,45 @@
+relationship fs_track
+	fromColumn: fact_stream.track_key
+	toColumn: dim_track.track_key
+
+relationship fs_artist
+	fromColumn: fact_stream.artist_key
+	toColumn: dim_artist.artist_key
+
+relationship fs_album
+	fromColumn: fact_stream.album_key
+	toColumn: dim_album.album_key
+
+relationship fs_episode
+	fromColumn: fact_stream.episode_key
+	toColumn: dim_episode.episode_key
+
+relationship fs_show
+	fromColumn: fact_stream.show_key
+	toColumn: dim_show.show_key
+
+relationship fs_platform
+	fromColumn: fact_stream.platform_key
+	toColumn: dim_platform.platform_key
+
+relationship fs_country
+	fromColumn: fact_stream.country_key
+	toColumn: dim_country.country_key
+
+relationship fs_content_type
+	fromColumn: fact_stream.content_type_key
+	toColumn: dim_content_type.content_type_key
+
+relationship fs_reason_start
+	fromColumn: fact_stream.reason_start_key
+	toColumn: dim_playback_reason.reason_key
+
+relationship fs_reason_end
+	isActive: false
+	fromColumn: fact_stream.reason_end_key
+	toColumn: dim_playback_reason.reason_key
+
+relationship fs_calendar
+	fromColumn: fact_stream.stream_date_sk
+	toColumn: dim_calendar.Date_SK
+

@@ -1,0 +1,44 @@
+table dim_platform
+	lineageTag: a7000001-0001-0001-0001-000000000001
+
+	column platform_key
+		dataType: int64
+		formatString: 0
+		displayFolder: Keys
+		lineageTag: a7000001-0001-0001-0001-000000000002
+		summarizeBy: none
+		sourceColumn: platform_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Platform (Raw)'
+		dataType: string
+		lineageTag: a7000001-0001-0001-0001-000000000003
+		summarizeBy: none
+		sourceColumn: Platform (Raw)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Platform Category'
+		dataType: string
+		lineageTag: a7000001-0001-0001-0001-000000000004
+		summarizeBy: none
+		sourceColumn: Platform Category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_platform = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\jackr\Downloads\my_spotify_data\star_schema\dim_platform.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"platform_key", Int64.Type}, {"platform_raw", type text}, {"platform_category", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"platform_raw", "Platform (Raw)"}, {"platform_category", "Platform Category"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

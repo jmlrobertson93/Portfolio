@@ -1,0 +1,36 @@
+table dim_content_type
+	lineageTag: a9000001-0001-0001-0001-000000000001
+
+	column content_type_key
+		dataType: int64
+		formatString: 0
+		displayFolder: Keys
+		lineageTag: a9000001-0001-0001-0001-000000000002
+		summarizeBy: none
+		sourceColumn: content_type_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Content Type'
+		dataType: string
+		lineageTag: a9000001-0001-0001-0001-000000000003
+		summarizeBy: none
+		sourceColumn: Content Type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_content_type = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\jackr\Downloads\my_spotify_data\star_schema\dim_content_type.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"content_type_key", Int64.Type}, {"content_type", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"content_type", "Content Type"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

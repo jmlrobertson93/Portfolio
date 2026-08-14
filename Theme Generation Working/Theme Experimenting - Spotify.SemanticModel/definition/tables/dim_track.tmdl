@@ -1,0 +1,45 @@
+table dim_track
+	lineageTag: a3000001-0001-0001-0001-000000000001
+
+	column track_key
+		dataType: int64
+		formatString: 0
+		displayFolder: Keys
+		lineageTag: a3000001-0001-0001-0001-000000000002
+		summarizeBy: none
+		sourceColumn: track_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column spotify_track_uri
+		dataType: string
+		lineageTag: a3000001-0001-0001-0001-000000000003
+		summarizeBy: none
+		sourceColumn: spotify_track_uri
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Track Name'
+		dataType: string
+		lineageTag: a3000001-0001-0001-0001-000000000004
+		summarizeBy: none
+		sourceColumn: Track Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_track = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\jackr\Downloads\my_spotify_data\star_schema\dim_track.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"track_key", Int64.Type}, {"spotify_track_uri", type text}, {"track_name", type text}, {"artist_key", Int64.Type}, {"album_key", Int64.Type}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"artist_key", "album_key"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"track_name", "Track Name"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
