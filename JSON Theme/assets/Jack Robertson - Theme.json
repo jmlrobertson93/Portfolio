@@ -1439,6 +1439,18 @@
         ]
       }
     },
+    "image": {
+      "*": {
+        "padding": [
+          {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          }
+        ]
+      }
+    },
     "shape": {
       "*": {
         "padding": [
@@ -2061,7 +2073,7 @@
       }
     }
   },
-  "name": "Spotify Personal Theme",
+  "name": "Jack Robertson Theme",
   "dataColors": [
     "#0095DD",
     "#FFAA33",
