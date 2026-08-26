@@ -1,0 +1,26 @@
+{
+  "_appliesTo": [
+    "clusteredBarChart", "lineChart", "pieChart", "tableEx",
+    "barChart", "columnChart", "clusteredColumnChart", "hundredPercentStackedBarChart",
+    "hundredPercentStackedColumnChart", "stackedBarChart", "stackedColumnChart", "waterfallChart",
+    "areaChart", "stackedAreaChart", "lineClusteredColumnComboChart", "lineStackedColumnComboChart",
+    "ribbonChart", "funnel", "scatterChart", "donutChart",
+    "treemap",
+    "pivotTable", "map", "filledMap", "shapeMap"
+  ],
+  "styles": {
+    "*": {
+      "divider": [
+        {
+          "show": true,
+          "width": 4,
+          "color": {
+            "solid": {
+              "color": { "expr": { "ThemeDataColor": { "ColorId": 0, "Percent": 0 } } }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

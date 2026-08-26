@@ -1,0 +1,79 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "27d7a6bb02e1c321b02c",
+  "position": {
+    "x": 1120,
+    "y": 223.99999999999997,
+    "z": 7000,
+    "height": 400,
+    "width": 784,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "funnel",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_playback_reason"
+                    }
+                  },
+                  "Property": "Reason Name"
+                }
+              },
+              "queryRef": "dim_playback_reason.Reason Name",
+              "nativeQueryRef": "Reason Name",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Count of Streams"
+                }
+              },
+              "queryRef": "_Measures.Count of Streams",
+              "nativeQueryRef": "Count of Streams"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "divider": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

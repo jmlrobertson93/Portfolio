@@ -1,0 +1,54 @@
+table dim_episode
+	lineageTag: a5000001-0001-0001-0001-000000000001
+
+	column episode_key
+		dataType: int64
+		formatString: 0
+		displayFolder: Keys
+		lineageTag: a5000001-0001-0001-0001-000000000002
+		summarizeBy: none
+		sourceColumn: episode_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column spotify_episode_uri
+		dataType: string
+		lineageTag: a5000001-0001-0001-0001-000000000003
+		summarizeBy: none
+		sourceColumn: spotify_episode_uri
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Episode Name'
+		dataType: string
+		lineageTag: a5000001-0001-0001-0001-000000000004
+		summarizeBy: none
+		sourceColumn: Episode Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column show_key
+		dataType: int64
+		formatString: 0
+		displayFolder: Keys
+		lineageTag: a5000001-0001-0001-0001-000000000005
+		summarizeBy: none
+		sourceColumn: show_key
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_episode = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\jackr\Downloads\my_spotify_data\star_schema\dim_episode.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"episode_key", Int64.Type}, {"spotify_episode_uri", type text}, {"episode_name", type text}, {"show_key", Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"episode_name", "Episode Name"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

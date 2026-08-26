@@ -1,0 +1,36 @@
+table dim_artist
+	lineageTag: a2000001-0001-0001-0001-000000000001
+
+	column artist_key
+		dataType: int64
+		formatString: 0
+		displayFolder: Keys
+		lineageTag: a2000001-0001-0001-0001-000000000002
+		summarizeBy: none
+		sourceColumn: artist_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Artist Name'
+		dataType: string
+		lineageTag: a2000001-0001-0001-0001-000000000003
+		summarizeBy: none
+		sourceColumn: Artist Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_artist = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\jackr\Downloads\my_spotify_data\star_schema\dim_artist.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"artist_key", Int64.Type}, {"artist_name", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"artist_name", "Artist Name"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

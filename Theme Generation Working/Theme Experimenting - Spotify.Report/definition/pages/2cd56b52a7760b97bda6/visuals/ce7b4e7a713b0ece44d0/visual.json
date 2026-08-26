@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "ce7b4e7a713b0ece44d0",
+  "position": {
+    "x": 1120,
+    "y": 223.99999999999997,
+    "z": 7000,
+    "height": 400,
+    "width": 784,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "stackedAreaChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_calendar"
+                    }
+                  },
+                  "Property": "Start Of Year"
+                }
+              },
+              "queryRef": "dim_calendar.Start Of Year",
+              "nativeQueryRef": "Start Of Year",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_stream"
+                    }
+                  },
+                  "Property": "shuffle"
+                }
+              },
+              "queryRef": "fact_stream.shuffle",
+              "nativeQueryRef": "shuffle"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Count of Streams"
+                }
+              },
+              "queryRef": "_Measures.Count of Streams",
+              "nativeQueryRef": "Count of Streams"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_calendar"
+                  }
+                },
+                "Property": "Start Of Year"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

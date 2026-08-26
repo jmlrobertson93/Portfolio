@@ -1,0 +1,111 @@
+{
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": { "ThemeDataColor": { "ColorId": 4, "Percent": 0 } }
+                }
+              }
+            },
+            "bold": true,
+            "fontFamily": "Arial",
+            "fontColor": { "solid": { "color": "#FFFFFF" } },
+            "alignment": "center",
+            "fontSize": 16,
+            "titleWrap": true
+          }
+        ],
+        "subTitle": [
+          { "show": false }
+        ],
+        "spacing": [
+          {
+            "customizeSpacing": true,
+            "spaceBelowTitle": 4,
+            "spaceBelowSubTitle": 16
+          }
+        ],
+        "padding": [
+          { "top": 4, "left": 16, "right": 16, "bottom": 16 }
+        ],
+        "border": [
+          {
+            "show": false,
+            "color": { "solid": { "color": "backgroundDark" } },
+            "radius": 8,
+            "width": 1
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": false,
+            "preset": "Custom",
+            "angle": 90,
+            "shadowBlur": 3,
+            "shadowDistance": 1,
+            "shadowSpread": 0,
+            "transparency": 86
+          }
+        ],
+        "divider": [
+          {
+            "show": false,
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": { "ThemeDataColor": { "ColorId": 0, "Percent": 0 } }
+                }
+              }
+            },
+            "width": 8
+          }
+        ],
+        "visualTooltip": [
+          {
+            "themedTitleFontColor": {
+              "solid": {
+                "color": { "expr": { "ThemeDataColor": { "ColorId": 9, "Percent": 0 } } }
+              }
+            },
+            "themedValueFontColor": {
+              "solid": {
+                "color": { "expr": { "ThemeDataColor": { "ColorId": 9, "Percent": 0 } } }
+              }
+            },
+            "actionFontColor": {
+              "solid": {
+                "color": { "expr": { "ThemeDataColor": { "ColorId": 9, "Percent": 0 } } }
+              }
+            }
+          }
+        ],
+        "visualHeaderTooltip": [
+          {
+            "themedTitleFontColor": {
+              "solid": {
+                "color": { "expr": { "ThemeDataColor": { "ColorId": 9, "Percent": 0 } } }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 0
+          }
+        ],
+        "outspace": [
+          { "transparency": 95 }
+        ]
+      }
+    }
+  }
+}
