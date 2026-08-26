@@ -11,7 +11,7 @@
       "type": "SharedResources"
     },
     "customTheme": {
-      "name": "Spotify_Personal_Theme5892192561010573.json",
+      "name": "Jack_Robertson_Theme6758854763064236.json",
       "reportVersionAtImport": {
         "visual": "2.8.0",
         "report": "3.2.0",
@@ -296,14 +296,19 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "page_background025602956681401112.png",
-          "path": "page_background025602956681401112.png",
+          "name": "Help4155316969839825.png",
+          "path": "Help4155316969839825.png",
           "type": "Image"
         },
         {
-          "name": "Spotify_Personal_Theme5892192561010573.json",
-          "path": "Spotify_Personal_Theme5892192561010573.json",
+          "name": "Jack_Robertson_Theme6758854763064236.json",
+          "path": "Jack_Robertson_Theme6758854763064236.json",
           "type": "CustomTheme"
+        },
+        {
+          "name": "page_background025602956681401112.png",
+          "path": "page_background025602956681401112.png",
+          "type": "Image"
         }
       ]
     }
