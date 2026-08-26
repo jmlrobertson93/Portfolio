@@ -296,6 +296,11 @@
       "type": "RegisteredResources",
       "items": [
         {
+          "name": "page_background025602956681401112.png",
+          "path": "page_background025602956681401112.png",
+          "type": "Image"
+        },
+        {
           "name": "Spotify_Personal_Theme5892192561010573.json",
           "path": "Spotify_Personal_Theme5892192561010573.json",
           "type": "CustomTheme"

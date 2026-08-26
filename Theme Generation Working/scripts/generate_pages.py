@@ -36,6 +36,35 @@ MAIN_VIZ_IDS = [
 VISUAL_SCHEMA = "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json"
 PAGE_SCHEMA = "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json"
 
+# Page-background image (structural-blue title band + white canvas) that
+# replaced the "Title Background Example" shape - confirmed structure read
+# back from a manually-saved test page. "Fit" is the internal literal for
+# what Desktop's formatting pane labels "Stretch".
+PAGE_BACKGROUND_OBJECTS = {
+    "background": [
+        {
+            "properties": {
+                "image": {
+                    "image": {
+                        "name": {"expr": {"Literal": {"Value": "'page_background.png'"}}},
+                        "url": {
+                            "expr": {
+                                "ResourcePackageItem": {
+                                    "PackageName": "RegisteredResources",
+                                    "PackageType": 1,
+                                    "ItemName": "page_background025602956681401112.png",
+                                }
+                            }
+                        },
+                        "scaling": {"expr": {"Literal": {"Value": "'Fit'"}}},
+                    }
+                },
+                "transparency": {"expr": {"Literal": {"Value": "0D"}}},
+            }
+        }
+    ]
+}
+
 
 def new_id():
     return secrets.token_hex(10)
@@ -246,6 +275,7 @@ def main():
             "displayOption": "FitToPage",
             "height": 1080,
             "width": 1920,
+            "objects": PAGE_BACKGROUND_OBJECTS,
         }
         (page_dir / "page.json").write_text(json.dumps(page_json, indent=2), encoding="utf-8")
 
