@@ -4,10 +4,10 @@
   "position": {
     "x": 1120,
     "y": 223.99999999999997,
-    "z": 7000,
+    "z": 5000,
     "height": 400,
     "width": 784,
-    "tabOrder": 7000
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "funnel",

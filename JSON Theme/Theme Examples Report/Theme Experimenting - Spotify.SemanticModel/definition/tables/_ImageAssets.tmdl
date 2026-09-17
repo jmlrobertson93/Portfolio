@@ -1,0 +1,60 @@
+table _ImageAssets
+	lineageTag: 77131b33-6965-4f2c-9279-7fb9707f8128
+
+	measure 'Selected Image URL' = SELECTEDVALUE(_ImageAssets[Base64Image])
+		displayFolder: _ImageURLs
+		lineageTag: 4ae4efc9-d1b5-4330-a910-18124b481a55
+		dataCategory: ImageUrl
+
+	measure 'Homepage URL' = CALCULATE([Selected Image URL],_ImageAssets[Image Name] = "Homepage")
+		displayFolder: _ImageURLs
+		lineageTag: c4c26412-b14b-452e-8d08-802f9afeba3d
+
+	measure 'Help URL' = CALCULATE([Selected Image URL],_ImageAssets[Image Name] = "Help")
+		displayFolder: _ImageURLs
+		lineageTag: 443382f5-bab7-4583-a35f-26695bca7cf8
+
+	measure 'RedWarning URL' = CALCULATE([Selected Image URL],_ImageAssets[Image Name] = "RedWarning")
+		lineageTag: 7ac73d01-bd50-453a-9f16-9bab62fccf9e
+
+	measure 'AmberWarning URL' = CALCULATE([Selected Image URL],_ImageAssets[Image Name] = "AmberWarning")
+		lineageTag: 3a80c370-7338-453c-9c60-d36395685c2c
+
+	measure 'GreenTick URL' = CALCULATE([Selected Image URL],_ImageAssets[Image Name] = "GreenTick")
+		lineageTag: fed4beae-ae9e-4f7a-803e-0c77796523d3
+
+	column 'Image Name'
+		dataType: string
+		lineageTag: 47dd25e8-87db-4c0e-bb53-22ad80436c89
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Image Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Base64Image
+		dataType: string
+		lineageTag: 3d362ba9-e845-4734-881d-9910671db8bd
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Base64Image
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _ImageAssets = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files("C:\Users\jackr\OneDrive\Documents\_SourceControl\Dev_Portfolio\Icons\assets"),
+				    FilteredPNG = Table.SelectRows(Source, each [Extension] = ".png"),
+				    AddedBase64 = Table.AddColumn(FilteredPNG, "Base64Image", each "data:image/png;base64," & Binary.ToText([Content], BinaryEncoding.Base64)),
+				    RemovedColumns = Table.SelectColumns(AddedBase64, {"Name", "Base64Image"}),
+				    RemovedFileType = Table.TransformColumns(RemovedColumns, {{"Name", each Text.BeforeDelimiter(_, "."), type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(RemovedFileType,{{"Name", "Image Name"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

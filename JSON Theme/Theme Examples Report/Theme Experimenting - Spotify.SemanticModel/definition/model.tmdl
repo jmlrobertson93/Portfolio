@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["fact_stream","dim_track","dim_artist","dim_album","dim_episode","dim_show","dim_platform","dim_country","dim_content_type","dim_playback_reason"]
+annotation PBI_QueryOrder = ["fact_stream","dim_track","dim_artist","dim_album","dim_episode","dim_show","dim_platform","dim_country","dim_content_type","dim_playback_reason","_ImageAssets","_Metrics"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -26,6 +26,8 @@ ref table dim_platform
 ref table dim_country
 ref table dim_content_type
 ref table dim_playback_reason
+ref table _ImageAssets
+ref table _Metrics
 
 ref cultureInfo en-US
 

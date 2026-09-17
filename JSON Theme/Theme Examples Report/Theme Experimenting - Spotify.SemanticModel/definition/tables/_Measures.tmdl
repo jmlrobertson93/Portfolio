@@ -278,6 +278,112 @@ table _Measures
 			```
 		lineageTag: 73d077b3-0000-45a9-9830-d8310bf2f02d
 
+	measure 'Unique Months' = DISTINCTCOUNT(dim_calendar[Month Year])
+		formatString: 0
+		lineageTag: 2bd0297e-13d5-4896-b5a1-718901381bd3
+
+	measure 'Artists per Month' = [Unique Artists]/[Unique Months]
+		lineageTag: 61500657-13d6-44f2-9443-e2af2ea69f29
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Tracks per Month' = [Unique Tracks]/[Unique Months]
+		lineageTag: c36490cb-499a-4be4-b838-2f4d65769a86
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Streams per Month' = [Count of Streams]/[Unique Months]
+		lineageTag: db920bd0-e442-4e0e-ab6b-f58c080a4d5b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Selected Metric' =
+			
+			SWITCH(
+			    SELECTEDVALUE(_Metrics[Metric]),
+			    "Artists per Month", [Artists per Month],
+			    "Streams per Month", [Streams per Month],
+			    "Tracks per Month", [Tracks per Month]
+			)
+		lineageTag: 1881cc0b-73fb-44af-a47c-2228f0ca908b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Selected Target' = SELECTEDVALUE(_Metrics[Target])
+		formatString: 0
+		lineageTag: 271a7fc1-1546-460a-b17b-ad467df6818e
+
+	measure 'Metric RAG URL' = ```
+			
+			
+			VAR _Metric = [Selected Metric]
+			VAR _Target = [Selected Target]
+			
+			VAR _Red = [RedWarning URL]
+			VAR _Amber = [AmberWarning URL]
+			VAR _Green = [GreenTick URL]
+			
+			RETURN
+			    IF(
+			        ISBLANK(_Metric) || ISBLANK(_Target), 
+			        "N/A",
+			        IF(_Metric >= _Target, _Green,
+			            IF(_Metric >= _Target * 0.9, _Amber, _Red))
+			    )
+			```
+		lineageTag: f39976c2-fc7d-4fe6-a409-543f9e9eb596
+		dataCategory: ImageUrl
+
+	measure 'Metric RAG Hex' = ```
+			
+			
+			VAR _Metric = [Selected Metric]
+			VAR _Target = [Selected Target]
+			
+			VAR _TransparencyPerc = "50"
+			
+			VAR _Red = "#e33a02"
+			VAR _Amber = "#fcbb00"
+			VAR _Green = "#1aab40"
+			
+			RETURN
+			    IF(
+			        ISBLANK(_Metric) || ISBLANK(_Target), 
+			        "N/A",
+			        IF(_Metric >= _Target, _Green,
+			            IF(_Metric >= _Target * 0.9, _Amber, _Red))
+			    ) 
+			    
+			    & _TransparencyPerc
+			```
+		lineageTag: d26401ed-5759-4101-8c97-6f41c7452bb9
+
+	measure 'Metric RAG SVG' =
+			
+			VAR _Metric      = [Selected Metric]
+			VAR _Target      = [Selected Target]
+			VAR _Pct         = DIVIDE(_Metric, _Target, 0)
+			VAR _PctCapped   = MIN(_Pct, 1)
+			VAR _BarMaxWidth = 140
+			VAR _BarWidth    = _PctCapped * _BarMaxWidth
+			VAR _Color =
+			    SWITCH(
+			        TRUE(),
+			        _Pct >= 1,   "#1aab40",   -- green
+			        _Pct >= 0.9, "#fcbb00",   -- amber
+			        "#e33a02"                 -- red
+			    )
+			VAR _SVG =
+			    "<svg xmlns='http://www.w3.org/2000/svg' width='" & _BarMaxWidth & "' height='16'>" &
+			        "<rect x='0' y='0' width='" & _BarMaxWidth & "' height='16' rx='3' fill='%23E0E0E0'/>" &
+			        "<rect x='0' y='0' width='" & _BarWidth & "' height='16' rx='3' fill='" &
+			            SUBSTITUTE(_Color, "#", "%23") & "'/>" &
+			    "</svg>"
+			RETURN
+			    "data:image/svg+xml;utf8," & _SVG
+		lineageTag: 3f8f1b4b-5a29-42fa-b241-2f420fadf9fa
+		dataCategory: ImageUrl
+
 	column Value
 		isHidden
 		lineageTag: 75ac080c-7e2b-4ba7-aad0-adc98d1eb095

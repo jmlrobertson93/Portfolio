@@ -474,5 +474,107 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "aa9e18288fa7a9c47b6a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Avg. Stream Duration (min)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f13c61b82126ad6477e0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Count of Streams"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6893ae0858f97d62e5c9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Listening Time (hrs)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "596638382a8d2fe1fb54",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Listening Time (min)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "714e0718f6712ab88999",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Unique Albums"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9895217f3266ed6d1e7d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Unique Artists"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bf71c3428c5b910be12d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Unique Tracks"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }
